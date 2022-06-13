@@ -1,4 +1,4 @@
- CREATE DATABASE `bai_tap1`;
+CREATE DATABASE `bai_tap1`;
  
 CREATE TABLE `bai_tap1`.class(
 `id` INT NOT NULL,
