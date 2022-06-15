@@ -25,16 +25,25 @@ ngay_nhap DATE);
 
 CREATE TABLE chi_tiet_phieu_nhap(
 ma_vtu  INT,
-so_p  n INT,
+so_pn INT,
 dg_nhap INT,
 sl_nhap INT,
 PRIMARY KEY(ma_vtu, so_pn),
 FOREIGN KEY (ma_vtu) REFERENCES vat_tu(ma_vtu),
 FOREIGN KEY (so_pn) REFERENCES phieu_nhap(so_pn)) ;
 
+CREATE TABLE nha_cc(
+ma_ncc INT PRIMARY KEY,
+ten_ncc VARCHAR(20),
+dia_chi VARCHAR(50)
+);
+
 CREATE TABLE don_dh(
-so_dh INT AUTO_INCREMENT PRIMARY KEY,
-ngay_dh DATE);
+so_dh INT PRIMARY KEY,
+ngay_dh DATE,
+ma_ncc INT,
+foreign key(ma_ncc) references nha_cc(ma_ncc)
+);
 
 CREATE TABLE chi_tiet_dat_don_hang(
 ma_vtu  INT,
@@ -43,17 +52,8 @@ PRIMARY KEY (ma_vtu, so_dh),
 FOREIGN KEY (ma_vtu) REFERENCES vat_tu(ma_vtu),
 FOREIGN KEY (so_dh) REFERENCES don_dh(so_dh));
 
-CREATE TABLE sdt(
-id_sdt INT AUTO_INCREMENT PRIMARY KEY,
-sdt VARCHAR(11) NOT NULL
+create table sdt_nha_cc(
+ma_ncc int not null,
+sdt varchar(10) not null,
+foreign key(ma_ncc) references nha_cc (ma_ncc)
 );
-
-CREATE TABLE nha_cc(
-ma_nha_cc  INT,
-so_dh      INT,
-ten_nha_cc VARCHAR(50) NOT NULL,
-dia_chi    VARCHAR(50) NOT NULL,
-id_sdt     INT,
-PRIMARY KEY (ma_nha_cc, so_dh),
-FOREIGN KEY (so_dh) REFERENCES don_dh(so_dh),
-FOREIGN KEY (id_sdt) REFERENCES sdt(id_sdt));
