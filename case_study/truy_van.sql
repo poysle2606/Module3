@@ -21,11 +21,11 @@ GROUP BY kh.ma_khach_hang;
 SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, 
 ifnull(dv.chi_phi_thue + hdct.so_luong * dvdk.gia,0) AS tong_tien 
 FROM loai_khach lk
-left JOIN khach_hang kh ON lk.ma_loai_khach = kh.ma_loai_khach
-left JOIN hop_dong hd ON kh.ma_khach_hang = hd.ma_khach_hang
-left JOIN dich_vu dv ON hd.ma_dich_vu = dv.ma_dich_vu
-left JOIN hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
-left JOIN dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+LEFT JOIN khach_hang kh ON lk.ma_loai_khach = kh.ma_loai_khach
+LEFT JOIN hop_dong hd ON kh.ma_khach_hang = hd.ma_khach_hang
+LEFT JOIN dich_vu dv ON hd.ma_dich_vu = dv.ma_dich_vu
+LEFT JOIN hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+LEFT JOIN dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
 GROUP BY ma_khach_hang
 ORDER BY ma_khach_hang;
 
