@@ -38,5 +38,5 @@
    FROM product p
    JOIN order_detail od ON od.pro_id = p.pro_id
    JOIN `order` o ON o.or_id = od.or_id
-   GROUP BY or_id 
+   GROUP BY or_id ;
    
