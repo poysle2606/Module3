@@ -25,4 +25,4 @@ END //
 DELIMITER ;
 
 
-call findAllCustomers();
+call findAllCustomers()
