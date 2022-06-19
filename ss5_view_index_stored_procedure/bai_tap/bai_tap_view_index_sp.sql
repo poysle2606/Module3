@@ -21,25 +21,25 @@ VALUES  (1111, 'MILK', 15000, 10, 'white color', 'new'),
         
 alter table products add unique(product_code);
 
-create index nothing on products(product_name, product_price); 
+create index create_index_product on products(product_name, product_price); 
 
 explain select * from products where product_code;
 
-create view review_product as 
+create view create_review_product as 
 select product_code, product_name, product_price, product_status from products;
-select * from review_product;
+select * from create_review_product;
 
 -- Tiến hành sửa đổi view
-update review_product
+update create_review_product
 set product_price = 1234
 where product_code = 2222;
 
 -- Tiến hành xoá view
-drop view review_product;
+drop view create_review_product;
 
    -- Tạo store procedure lấy tất cả thông tin của tất cả các sản phẩm trong bảng product
 delimiter //
-create procedure procedure_product()
+create procedure get_all_product()
 begin 
  select * from products;
  end //
@@ -78,7 +78,7 @@ where `id` = id_product;
  end 
 // delimiter ;
 
- call update_product(1,3, "dong ngu",10,10,"dong ga", "moi");v 
+ call update_product(1,3, "dong ngu",10,10,"dong ga", "moi");
  call procedure_product;
  
  delimiter //
