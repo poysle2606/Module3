@@ -123,3 +123,92 @@ join bo_phan bp on nv.ma_bo_phan = bp.ma_bo_phan
 join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
 group by nv.ma_nhan_vien
 having count(hd.ma_nhan_vien) <=3;
+
+                              -- task 16 --
+update nhan_vien nv
+set `check`	= 1 
+where nv.ma_nhan_vien in (select * from (										
+select nv.ma_nhan_vien From nhan_vien nv
+left join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
+where nv.ma_nhan_vien not in (
+select nv.ma_nhan_vien from nhan_vien nv
+right join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien 
+group by ma_nhan_vien)) temp
+)
+;
+select ma_nhan_vien, ho_ten from nhan_vien where `check` = 1;
+
+                              -- task 17 --
+update khach_hang 
+set ma_loai_khach = 1 
+where ma_loai_khach in (select * from(
+select lk.ma_loai_khach from loai_khach lk
+left join khach_hang kh on lk.ma_loai_khach = kh.ma_loai_khach
+left join hop_dong hd on kh.ma_khach_hang = hd.ma_khach_hang
+left join hop_dong_chi_tiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
+left join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+left join dich_vu dv on hd.ma_dich_vu = dv.ma_dich_vu
+where (year(hd.ngay_lam_hop_dong) = 2021) and  (ifnull(dv.chi_phi_thue,0) + ifnull(so_luong * dvdk.gia,0) > 10000000)
+group by kh.ma_khach_hang
+having lk.ma_loai_khach = 2)temp)
+;
+
+							  -- task 18 --
+update khach_hang kh
+set `check`  = 1
+where kh.ma_khach_hang in (select * from(
+select kh.ma_khach_hang From khach_hang kh
+join hop_dong hd on kh.ma_khach_hang = hd.ma_khach_hang
+where year(hd.ngay_lam_hop_dong) < 2021
+group by kh.ma_khach_hang)temp)
+;
+select ma_khach_hang, ho_ten from khach_hang where `check` = 1; 
+
+                              -- task 19 --
+update dich_vu_di_kem dvdk 
+set dvdk.gia = dvdk.gia * 2 where ma_dich_vu_di_kem in( select * from (
+select dvdk.ma_dich_vu_di_kem from hop_dong hd 
+join hop_dong_chi_tiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
+join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+where (hdct.so_luong > 10) and year(hd.ngay_lam_hop_dong)  = 2020
+group by dvdk.gia) temp)
+;
+
+                              -- task 20 -- 
+select ma_nhan_vien as id , ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi from nhan_vien
+union all 
+select ma_khach_hang as id, ho_ten , email, so_dien_thoai, ngay_sinh, dia_chi from khach_hang;
+
+							  -- task 21 --		
+create view v_nhan_vien as
+select nv.* from nhan_vien nv
+join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
+where (nv.dia_chi like '%Yên Bái%') and (hd.ngay_lam_hop_dong = 2021-04-25);
+
+                              -- task 22 --
+update view v_nhan_vien
+set nhan_vien.dia_chi = '%Liên Chiểu%';
+
+                              -- task 23 --
+delimiter //
+create procedure sp_xoa_khach_hang (in id_khach_hang int )
+begin 
+   delete from v_nhan_vien 
+   where ma_khach_hang = id_khach_hang;
+end;
+// delimiter ; 
+
+                              -- task 24 --
+delimiter // 
+create procedure sp_them_moi_hop_dong (in ngay_lam_hop_dong varchar(45),
+									   in ngay_ket_thuc varchar(45), 
+                                       in tien_dat_coc double,
+                                       in ma_nhan_vien int,
+                                       in ma_khach_hang int,
+                                       in ma_dich_vu int)
+begin 
+insert into hop_dong(`ngay_lam_hop_dong`, `ngay_ket_thuc`, `tien_dat_coc`, `ma_nhan_vien`, `ma_khach_hang`, `ma_dich_vu`)
+values(ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu);
+end;
+// delimiter ;
+call sp_them_moi_hop_dong();
