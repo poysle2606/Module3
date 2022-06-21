@@ -1,0 +1,49 @@
+#header {
+    color: white;
+    background-color: chocolate;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 20px;
+    text-align: center;
+    font-family: "Arial Rounded MT Bold";
+    font-size: 110%;
+}
+
+#bottom {
+    text-align: center;
+    background-color: #d4d4d4;
+    border-radius: 10px;
+}
+
+img {
+    margin-top: 60px;
+}
+
+#title1 {
+    text-indent: 150px;
+}
+
+.menuitem {
+    font-family: Constantia;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    background-color: chocolate;
+    list-style-type: none;
+    padding: -3px;
+    width: 60%;
+}
+a:hover {
+    color: black;
+}
+.menuitem:hover {
+    background: #d4d4d4;
+}
+#title {
+    border-radius: 10px;
+    background-color: #d4d4d4;
+}
+.flex-container {
+    flex-direction: row;
+    display: flex;
+    margin: 30px;
+}
