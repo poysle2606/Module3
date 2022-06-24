@@ -1,0 +1,44 @@
+.login {
+    padding-left: 15px;
+}
+.login ,a {
+    color: white;
+    text-decoration: none;
+}
+
+.login, a:hover{
+    color: black;
+    text-decoration: underline;
+}
+
+#title {
+    height: 30px;
+    width: 100%;
+    background-color: deepskyblue;
+    text-align: center;
+}
+
+.spanh1 {
+    padding: 50px;
+}
+
+.education {
+    float: left;
+    margin-left: 20px;
+}
+.education a {
+    color: blue;
+    text-decoration: none;
+}
+.education a:hover {
+    margin: 1px;
+    text-decoration: underline green;
+    color: green;
+
+}
+.spanh1 a {
+    padding-top: 5px;
+    margin-left: 20px;
+    font-size: 25px;
+    color: blue;
+}
