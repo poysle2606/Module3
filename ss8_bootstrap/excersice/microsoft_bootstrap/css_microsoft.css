@@ -42,3 +42,8 @@
     font-size: 25px;
     color: blue;
 }
+
+.product {
+    float: left;
+    padding: 10px;
+}

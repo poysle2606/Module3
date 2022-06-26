@@ -1,4 +1,6 @@
 #header {
+    height: 100px;
+    width: 95%;
     color: white;
     background-color: chocolate;
     border-radius: 10px;
@@ -45,5 +47,5 @@ a:hover {
 .flex-container {
     flex-direction: row;
     display: flex;
-    margin: 30px;
+    margin: 50px;
 }

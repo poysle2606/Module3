@@ -45,7 +45,7 @@ body {
 
 .icon_center:hover {
     background-color: #CDCDCD;
-    padding: 1px;
+    margin: 1px;
 }
 
 .col-1 {
@@ -165,19 +165,37 @@ a {
     text-decoration: none;
 }
 
-.new_feed {
-    width: 80%;
-    margin: auto;
-}
 
-.new_feed input {
-    width: 100%;
+.header-left {
+    width: 90%;
+    height: 100px;
+    margin-left: 25px;
+    padding: 20px;
+    background-color: white;
     border-radius: 10px;
-    border: 1px solid;
-    background-color: aliceblue;
+}
+.header-left input {
+    width: 100%;
     height: 30px;
+    border: none;
+    background-color: aliceblue;
+    border-radius: 10px;
 }
 
+.emotion {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    text-align: center;
+
+}
+
+.new_feed{
+    height: 100px;
+    width: 100%;
+    display: flex;
+
+}
 
 
 

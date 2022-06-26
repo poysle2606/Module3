@@ -1,0 +1,140 @@
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+.row::after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+#headered{
+    width: 100%;
+    height: 53px;
+    border: 1px;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    display: flex;
+}
+
+#midder {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 535px;
+    background-color: #d4d4d4;
+}
+#footer {
+    clear: both;
+    width: 100%;
+    height: 50px;
+    background-color: gray;
+}
+
+.mid-left {
+    height: 100%;
+    background-color: #d4d4d4;
+}
+
+.mid-center {
+    height: 100%;
+    background-color: white;
+}
+
+.mid-right {
+    height: 100%;
+    background-color:#d4d4d4 ;
+}
+
+.left-logo {
+    margin-left: 650px;
+}
+
+.cross-bar {
+    padding: 20px;
+    margin: 0;
+}
+.cross-bar:hover {
+    color: black;
+    background-color: chocolate;
+    margin-left: 1px;
+}
+
+.link {
+    padding: 20px;
+    color: royalblue;
+}
+
+.text-footer {
+    padding-top: 10px;
+    font-size: 25px;
+    color: black;
+}
+
+.forter-right{
+    height: 70px;
+    width: 70%;
+    text-align: center;
+    padding-top: 25px;
+    margin: 60px;
+    border-radius: 10px;
+    background-color: white;
+}
