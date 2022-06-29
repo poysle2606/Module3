@@ -30,8 +30,10 @@ public class ProductServlet extends HttpServlet {
                 showEditProduct(request, response);
                 break;
             case "delete":
+                showDeleteProduct(request, response);
                 break;
             case "view":
+                viewProduct(request,response);
                 break;
             default:
                 listProduct(request, response);
@@ -53,6 +55,7 @@ public class ProductServlet extends HttpServlet {
                 updateProduct(request, response);
                 break;
             case "delete":
+                deleteProduct(request,response);
                 break;
             default:
                 listProduct(request, response);
@@ -108,15 +111,15 @@ public class ProductServlet extends HttpServlet {
         double price = Double.parseDouble(request.getParameter("price"));
         int amount = Integer.parseInt(request.getParameter("amount"));
         String production = request.getParameter("production");
-        Product product = productService.findById(id);
+        Product product = this.productService.findById(id);
         product.setName(name);
         product.setPrice(price);
         product.setAmount(amount);
         product.setProduction(production);
 
-        productService.update(id, product);
+        this.productService.update(id, product);
 
-        request.setAttribute("productList", productList);
+        request.setAttribute("productList", product);
         request.setAttribute("message", "Update product success.");
         RequestDispatcher dispatcher = request.getRequestDispatcher("edit.jsp");
         try {
@@ -128,6 +131,62 @@ public class ProductServlet extends HttpServlet {
         }
 
     }
+
+    private void showDeleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        RequestDispatcher dispatcher;
+        if (product == null) {
+            dispatcher = request.getRequestDispatcher("error.jsp");
+        } else {
+            request.setAttribute("productList", product);
+            dispatcher = request.getRequestDispatcher("delete.jsp");
+        }
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        RequestDispatcher dispatcher;
+        if(product == null) {
+            dispatcher = request.getRequestDispatcher("error.jsp");
+        } else{
+            productService.remove(id);
+            try {
+                response.sendRedirect("/product");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void viewProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        RequestDispatcher dispatcher;
+        if(product ==  null){
+            dispatcher = request.getRequestDispatcher("error.jsp");
+        } else {
+            request.setAttribute("productList", product);
+            dispatcher = request.getRequestDispatcher("view.jsp");
+        }
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     private int idCreate() {
         int max = 0;

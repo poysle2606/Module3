@@ -36,6 +36,6 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public void remove(int id) {
-
+iProductRepository.remove(id);
     }
 }
