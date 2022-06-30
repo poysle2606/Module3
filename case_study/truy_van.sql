@@ -118,11 +118,14 @@ WHERE (MONTH(hd.ngay_lam_hop_dong) BETWEEN 10 AND 12) AND YEAR(hd.ngay_lam_hop_d
  having so_lan_su_dung = 1;
  
                                -- task 15 -- 
-select count(hd.ma_nhan_vien) as ma_nhan_vien , nv.ho_ten, td.ten_trinh_do, bp.ten_bo_phan, nv.so_dien_thoai, nv.dia_chi from nhan_vien nv
+  -- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, 
+ -- so_dien_thoai, dia_chi mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
+select nv.ma_nhan_vien , nv.ho_ten, td.ten_trinh_do, bp.ten_bo_phan, nv.so_dien_thoai, nv.dia_chi 
+from nhan_vien nv
 join trinh_do td on nv.ma_trinh_do = td.ma_trinh_do
 join bo_phan bp on nv.ma_bo_phan = bp.ma_bo_phan
-join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
-group by nv.ma_nhan_vien
+right join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
+group by hd.ma_nhan_vien
 having count(hd.ma_nhan_vien) <=3;
 
                               -- task 16 --
@@ -154,9 +157,19 @@ group by kh.ma_khach_hang
 having lk.ma_loai_khach = 2)temp)
 ;
 
+select lk.ma_loai_khach, kh.ho_ten from loai_khach lk
+left join khach_hang kh on lk.ma_loai_khach = kh.ma_loai_khach
+left join hop_dong hd on kh.ma_khach_hang = hd.ma_khach_hang
+left join hop_dong_chi_tiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
+left join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+left join dich_vu dv on hd.ma_dich_vu = dv.ma_dich_vu
+where (year(hd.ngay_lam_hop_dong) = 2021) and  (sum(dv.chi_phi_thue) + ifnull(so_luong * dvdk.gia,0) > 10000000)
+group by kh.ma_khach_hang
+having lk.ten_loai_khach like 'Platinium';
+
 							  -- task 18 --
 update khach_hang kh
-set `check`  = 1
+set `check`  = 1  
 where kh.ma_khach_hang in (select * from(
 select kh.ma_khach_hang From khach_hang kh
 join hop_dong hd on kh.ma_khach_hang = hd.ma_khach_hang
@@ -212,4 +225,13 @@ insert into hop_dong(`ngay_lam_hop_dong`, `ngay_ket_thuc`, `tien_dat_coc`, `ma_n
 values(ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu);
 end;
 // delimiter ;
-call sp_them_moi_hop_dong();
+call sp_them_moi_hop_dong('1998-06-26', '1998-07-03', 7000000, 2,5,4);
+
+                              -- task 25 -- 
+ delimiter //                             
+create trigger tr_xoa_hop_dong
+after delete on hop_dong for each row
+begin
+
+end //
+delimiter ;

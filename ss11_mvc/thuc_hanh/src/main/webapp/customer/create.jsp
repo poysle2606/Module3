@@ -10,7 +10,7 @@
 <head>
     <title>Create new Customer</title>
     <style>
-        .message{
+        .message {
             color: green;
         }
     </style>
@@ -19,7 +19,7 @@
 <h1>Create new Customer</h1>
 <p>
     <c:if test="${requestScope['message'] !=null}">
-<span class="message">${requestScope['message']}</span>
+        <span class="message">${requestScope['message']}</span>
     </c:if>
 </p>
 <p>
@@ -30,15 +30,15 @@
         <legend>Customer information</legend>
         <table>
             <tr>
-                <td>Name: </td>
+                <td>Name:</td>
                 <td><input type="text" name="name" id="name"></td>
             </tr>
             <tr>
-                <td>Email: </td>
+                <td>Email:</td>
                 <td><input type="text" name="email" id="email"></td>
             </tr>
             <tr>
-                <td>Address: </td>
+                <td>Address:</td>
                 <td><input type="text" name="address" id="address"></td>
             </tr>
             <tr>
