@@ -15,8 +15,17 @@
 <center>
     <h1>Users Management</h1>
     <h2>
-        <a href="/users?action=create">Add new Users</a>
+        <a href="/user?action=c reate">Add new Users</a>
     </h2>
+
+    <h2>
+        <a href="/user?action=sort">Sort Users</a>
+    </h2>
+
+    <form action="/user">
+        <input type="text" name="searchName">
+        <input type="submit" name="action" value="Search">
+    </form>
 </center>
 
 <div align="center">
@@ -29,15 +38,15 @@
             <th>Address</th>
             <th>Actions</th>
         </tr>
-        <c:forEach items="${userList}" var="users">
+        <c:forEach items="${users}" var="users">
             <tr>
                 <td><c:out value="${users.id}"/></td>
                 <td><c:out value="${users.name}"/></td>
                 <td><c:out value="${users.email}"/></td>
                 <td><c:out value="${users.address}"/></td>
                 <td>
-                    <a href="/users?action=edit&id=${users.id}">Edit</a>
-                    <a href="/users?action=delete&id=${users.id}">Delete</a>
+                    <a href="/user?action=edit&id=${users.id}">Edit</a>
+                    <a href="/user?action=delete&id=${users.id}">Delete</a>
                 </td>
             </tr>
         </c:forEach>

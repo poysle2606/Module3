@@ -14,7 +14,7 @@
 <center>
     <h1>User Management</h1>
     <h2>
-        <a href="/users">List All Users</a>
+        <a href="/user">List All Users</a>
     </h2>
 </center>
 <div align="center">

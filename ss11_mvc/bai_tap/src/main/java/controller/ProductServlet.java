@@ -2,7 +2,7 @@ package controller;
 
 import model.Product;
 import service.IProductService;
-import service.ProductServiceImpl;
+import service.ProductService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,7 +14,7 @@ import java.util.List;
 @WebServlet(name = "ProductServlet", urlPatterns = "/product")
 public class ProductServlet extends HttpServlet {
     static List<Product> productList = new ArrayList<>();
-    private IProductService productService = new ProductServiceImpl();
+    private IProductService productService = new ProductService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,11 +66,11 @@ public class ProductServlet extends HttpServlet {
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         productList = productService.findAll();
         request.setAttribute("productList", productList);
-        request.getRequestDispatcher("list.jsp").forward(request, response);
+        request.getRequestDispatcher("view/list.jsp").forward(request, response);
     }
 
     private void showCreateProduct(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/create.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -87,7 +87,7 @@ public class ProductServlet extends HttpServlet {
 
         Product product = new Product(id, name, price, amount, production);
         this.productService.save(product);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/create.jsp");
         request.setAttribute("message", "Add new product success.");
         try {
             dispatcher.forward(request, response);
@@ -97,7 +97,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showEditProduct(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/edit.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -121,7 +121,7 @@ public class ProductServlet extends HttpServlet {
 
         request.setAttribute("productList", product);
         request.setAttribute("message", "Update product success.");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/edit.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -140,7 +140,7 @@ public class ProductServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("error.jsp");
         } else {
             request.setAttribute("productList", product);
-            dispatcher = request.getRequestDispatcher("delete.jsp");
+            dispatcher = request.getRequestDispatcher("view/delete.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -175,7 +175,7 @@ public class ProductServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("error.jsp");
         } else {
             request.setAttribute("productList", product);
-            dispatcher = request.getRequestDispatcher("view.jsp");
+            dispatcher = request.getRequestDispatcher("view/view.jsp");
         }
         try {
             dispatcher.forward(request, response);
