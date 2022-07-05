@@ -67,7 +67,7 @@ public class ProductServlet extends HttpServlet {
 
 
     private void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        productList = iProductService.findAll();
+            productList = iProductService.findAll();
         request.setAttribute("product", productList);
         request.getRequestDispatcher("view/list.jsp").forward(request, response);
     }

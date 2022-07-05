@@ -5,7 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="471bd4d0-3c1d-4250-ac33-0cb7de8d7226" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/case_study_jsp&amp;servlet/.idea/case_study_jsp&amp;servlet.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/case_study_jsp&amp;servlet/furama_jdbc/src/main/java/model/customer/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/case_study_jsp&amp;servlet/furama_jdbc/src/main/java/model/employee/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss8_bootstrap/.idea/ss8_bootstrap.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/controller/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/controller/ProductServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/model/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/repository/IProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/repository/IProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/repository/ProductRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/service/IProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/service/IProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/service/ProductServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/create.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/delete.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-tomcat-9.0.64/webapps/ROOT/view.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study_jsp&amp;servlet/css_furama.css" beforeDir="false" afterPath="$PROJECT_DIR$/case_study_jsp&amp;servlet/furama_display/css_furama.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study_jsp&amp;servlet/display_furama.html" beforeDir="false" afterPath="$PROJECT_DIR$/case_study_jsp&amp;servlet/furama_display/display_furama.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss11_mvc/bai_tap2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss11_mvc/bai_tap2/build/classes/java/main/repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ss11_mvc/bai_tap2/build/classes/java/main/repository/ProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss11_mvc/bai_tap2/build/libs/bai_tap2-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/ss11_mvc/bai_tap2/build/libs/bai_tap2-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss11_mvc/bai_tap2/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ss11_mvc/bai_tap2/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss8_bootstrap/excersice/microsoft_bootstrap/display_microsoft.html" beforeDir="false" afterPath="$PROJECT_DIR$/ss8_bootstrap/excersice/microsoft_bootstrap/display_microsoft.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +77,7 @@
       <workItem from="1656293094922" duration="26000" />
       <workItem from="1656294345114" duration="92000" />
       <workItem from="1656322031978" duration="875000" />
+      <workItem from="1656818591845" duration="185000" />
     </task>
     <servers />
   </component>

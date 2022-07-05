@@ -4,7 +4,7 @@ public class Employee {
     private int idEmployee;
     private String nameEmployee;
     private String dayOfBirth;
-    private String id_card;
+    private String idCard;
     private double salary;
     private String numberPhone;
     private String email;
@@ -17,13 +17,28 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int idEmployee, String nameEmployee, String dayOfBirth, String id_card,
+    public Employee(int idEmployee, String nameEmployee, String dayOfBirth, String idCard,
                     double salary, String numberPhone, String email, String address,
                     int positionId, int divisionId, int education_degree_id, String userName) {
         this.idEmployee = idEmployee;
         this.nameEmployee = nameEmployee;
         this.dayOfBirth = dayOfBirth;
-        this.id_card = id_card;
+        this.idCard = idCard;
+        this.salary = salary;
+        this.numberPhone = numberPhone;
+        this.email = email;
+        this.address = address;
+        this.positionId = positionId;
+        this.divisionId = divisionId;
+        this.education_degree_id = education_degree_id;
+        this.userName = userName;
+    }
+
+    public Employee(String nameEmployee, String dayOfBirth, String idCard, double salary, String numberPhone, String email,
+                    String address, int positionId, int divisionId, int education_degree_id, String userName) {
+        this.nameEmployee = nameEmployee;
+        this.dayOfBirth = dayOfBirth;
+        this.idCard = idCard;
         this.salary = salary;
         this.numberPhone = numberPhone;
         this.email = email;
@@ -58,12 +73,12 @@ public class Employee {
         this.dayOfBirth = dayOfBirth;
     }
 
-    public String getId_card() {
-        return id_card;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setId_card(String id_card) {
-        this.id_card = id_card;
+    public void setId_card(String idCard) {
+        this.idCard = idCard;
     }
 
     public double getSalary() {
