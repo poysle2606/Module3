@@ -22,6 +22,7 @@ public class CustomerRepository implements ICustomerRepository {
     private static final String EDIT_CUSTOMER = "update customer set customer_type_id = ?, `name` = ?,date_of_birth = ?, " +
             " gender = ?, id_card = ?, phone_number = ?, email = ?, address = ? where  id = ?";
     private static final String DELETE_CUSTOMER = "delete from customer where id = ?";
+    private static final String FIND_CUSTOMER = "select * from customer where `name` like ? and  email like ? and  customer_type_id like ? ";
 
     @Override
     public List<Customer> findAll() {
@@ -85,7 +86,7 @@ public class CustomerRepository implements ICustomerRepository {
             preparedStatement.setString(6, customer.getNumberPhone());
             preparedStatement.setString(7, customer.getEmail());
             preparedStatement.setString(8, customer.getAddress());
-            preparedStatement.setInt(9,customer.getIdCustomer());
+            preparedStatement.setInt(9, customer.getIdCustomer());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -98,7 +99,7 @@ public class CustomerRepository implements ICustomerRepository {
         try {
             Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -111,7 +112,7 @@ public class CustomerRepository implements ICustomerRepository {
         try {
             Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int idS = resultSet.getInt("id");
@@ -123,13 +124,43 @@ public class CustomerRepository implements ICustomerRepository {
                 String numberPhone = resultSet.getString("phone_number");
                 String email = resultSet.getString("email");
                 String address = resultSet.getString("address");
-
-                customer = new Customer(idS,customerTypeId,name,dayOfBirth,gender,idCard,numberPhone,email,address);
+                customer = new Customer(idS, customerTypeId, name, dayOfBirth, gender, idCard, numberPhone, email, address);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return customer;
+    }
+
+    @Override
+    public List<Customer> findCustomer(String name, String email, String type) {
+        customerList.clear();
+        try {
+            Connection connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_CUSTOMER);
+            preparedStatement.setString(1, "%" + name + "%");
+            preparedStatement.setString(2, "%" + email + "%");
+            preparedStatement.setString(3, "%" + type + "%");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int idS = resultSet.getInt("id");
+                int customerTypeId = resultSet.getInt("customer_type_id");
+                String nameS = resultSet.getString("name");
+                String dayOfBirth = resultSet.getString("date_of_birth");
+                int gender = resultSet.getInt("gender");
+                String idCard = resultSet.getString("id_card");
+                String numberPhone = resultSet.getString("phone_number");
+                String emailS = resultSet.getString("email");
+                String address = resultSet.getString("address");
+
+                Customer customer = new Customer(idS, customerTypeId, nameS, dayOfBirth, gender, idCard, numberPhone, emailS, address);
+                customerList.add(customer);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customerList;
     }
 
 }

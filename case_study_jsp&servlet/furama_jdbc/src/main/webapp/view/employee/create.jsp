@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -16,7 +17,7 @@
 <body>
 <div id="header-furama">
     <div>
-        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="80" width="80" alt="">
+        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="70" width="55" alt="">
     </div>
 
     <div>
@@ -27,37 +28,30 @@
     </div>
 
 </div>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" aria-current="page" href="home/home.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="/customer">Customer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="#">Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="#">Contract</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder=" Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-primary bg-dark" style="position: sticky; top: 0">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active button-function" aria-current="page" href="home/home.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active button-function" href="/customer">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active button-function" href="#">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active button-function" href="#">Contract</a>
+                </li>
+            </ul>
+            <form class="d-flex" style="margin-top: 15px">
+                <input class="form-control me-2" type="search" placeholder=" Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
 
 <div class="col-lg-12 ">
     <center><h1>Create New Employee</h1></center>
@@ -109,19 +103,31 @@
                 <tr>
                     <th>Position:</th>
                     <td>
-                        <input type="text" name="position" size="45">
+                        <select name="position" id="">
+                        <c:forEach items="${position}" var="position">
+                            <option value="${position.id}">${position.name}</option>
+                        </c:forEach>
+                        </select>
                     </td>
                 </tr>
                 <tr>
                     <th>Division:</th>
                     <td>
-                        <input type="text" name="division" size="45">
+                        <select name="division">
+                         <c:forEach items="${division}" var="division">
+                             <option value="${division.id}">${division.name}</option>
+                         </c:forEach>
+                        </select>
                     </td>
                 </tr>
                 <tr>
-                    <th>Education Degree:</th>
+                    <th>Education:</th>
                     <td>
-                        <input type="text" name="education" size="45">
+                        <select name="education">
+                           <c:forEach items="${education}" var="education">
+                               <option value="${education.id}">${education.name}</option>
+                           </c:forEach>
+                        </select>
                     </td>
                 </tr>
                 <tr>

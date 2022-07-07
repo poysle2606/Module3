@@ -13,6 +13,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../home/css_furama.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/boostrap/bootstrap413/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/boostrap/datatables/css/dataTables.bootstrap4.min.css"/>
+
     <style>
         button {
             border: none;
@@ -41,10 +46,10 @@
         }
     </style>
 </head>
-<body>
+<body style="width: 130%">
 <div id="header-furama">
     <div>
-        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="80" width="80" alt="">
+        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="70" width="55" alt="">
     </div>
 
     <div>
@@ -55,43 +60,39 @@
     </div>
 
 </div>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" aria-current="page" href="home/home.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="/customer">Customer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="#">Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="#">Contract</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder=" Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-primary bg-dark">
+    <div class="container-fluid col-lg-12">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active button-function" aria-current="page" href="home/home.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active button-function" href="/customer">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active button-function" href="#">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active button-function" href="#">Contract</a>
+                </li>
+            </ul>
+            <form class="d-flex" style="margin-top: 15px">
+                <input name="name" class="form-control col-lg-2 me-2" type="search" placeholder=" Search Name" aria-label="Search">
+                <input name="email" class="form-control col-lg-2 me-2" type="search" placeholder=" Search Email" aria-label="Search">
+                <input name="address" class="form-control col-lg-2 me-2" type="search" placeholder=" Search Address" aria-label="Search">
+                <input name="action" class="btn btn-outline-success" type="submit" value="search">
+            </form>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
 
 <center><h1>Employee List</h1></center>
 <button class="gun"><a href="/employee?action=create">Create New Employee</a></button>
-<div class="col-lg-12 gradient-header" style="width: 100%;height: auto">
+<div class="col-lg-12 gradient-header" style="width: 100%;height: auto" >
 
-    <table class="table table-striped">
+    <table class="table text-center table-striped" id="table">
+        <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -107,6 +108,8 @@
             <th>User name</th>
             <th>Actions</th>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach items="${employee}" var="employee">
             <tr>
                 <td>${employee.idEmployee}></td>
@@ -117,26 +120,46 @@
                 <td>${employee.numberPhone}</td>
                 <td>${employee.email}</td>
                 <td>${employee.address}</td>
-                <td>${employee.positionId}</td>
-                <td>${employee.divisionId}</td>
-                <td>${employee.education_degree_id}</td>
+                <td>
+                    <c:forEach items="${position}" var="position">
+                        <c:if test="${position.id == employee.positionId}">
+                            ${position.name}
+                        </c:if>
+                    </c:forEach>
+                </td>
+                <td>
+                    <c:forEach items="${division}" var="division">
+                        <c:if test="${division.id == employee.divisionId}">
+                            ${division.name}
+                        </c:if>
+                    </c:forEach>
+                </td>
+                <td>
+                    <c:forEach items="${education}" var="education">
+                        <c:if test="${education.id == employee.educationDegreeId}">
+                            ${education.name}
+                        </c:if>
+                    </c:forEach>
+                </td>
                 <td>${employee.userName}</td>
                 <td>
                     <button class="gun"><a href="/employee?action=edit&id=${employee.idEmployee}">Edit</a></button>
-                    <button class="gun" type="button" onclick="infoDelete('${employee.idEmployee}','${employee.nameEmployee}')"
+                    <button class="gun" type="button"
+                            onclick="infoDelete('${employee.idEmployee}','${employee.nameEmployee}')"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Delete
                     </button>
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 
 <%--Modal--%>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="/customer" method="post">
+        <form action="/employee" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
@@ -166,6 +189,25 @@
         document.getElementById("idDelete").value = id;
         document.getElementById("nameDelete").innerText = name;
     }
+</script>
+
+<script src="/boostrap/jquery/jquery-3.5.1.min.js"></script>
+<script src="/boostrap/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/boostrap/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="/boostrap/bootstrap413/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 4
+        });
+    })
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -16,7 +17,7 @@
 <body>
 <div id="header-furama">
     <div>
-        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="80" width="80" alt="">
+        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="70" width="55" alt="">
     </div>
 
     <div>
@@ -27,14 +28,8 @@
     </div>
 
 </div>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-primary bg-dark" style="position: sticky; top: 0">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -53,24 +48,28 @@
                         <a class="nav-link active button-function" href="#">Contract</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex" style="margin-top: 15px">
                     <input class="form-control me-2" type="search" placeholder=" Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
-</div>
 
 <div class="col-lg-12 ">
     <center><h1>Create New Customer</h1></center>
     <div>
         <form method="post">
-            <table >
+            <table>
                 <tr>
                     <th>Type of Customer:</th>
                     <td>
-                        <input type="text" name="typeCustomer" size="45">
+                        <select name="typeCustomer" id="typeCustomer">
+                            <c:forEach items="${customerType}" var="typeCustomer">
+                                <option selected value="${typeCustomer.id}">${typeCustomer.name}</option>
+                            </c:forEach>
+                        </select>
+
                     </td>
                 </tr>
                 <tr>
@@ -120,7 +119,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button type="submit">Create</button></td>
+                    <td>
+                        <button type="submit">Create</button>
+                    </td>
                 </tr>
             </table>
 
@@ -130,15 +131,15 @@
 
 <div id="footer-furama">
     <center>Furama resort 2022 &copy;</center>
-<%--    <div class="footer-big">--%>
-<%--        <div>--%>
-<%--            <img src="https://cdn-icons.flaticon.com/png/512/4643/premium/4643473.png?token=exp=1656983526~hmac=e1a78b5d2fb4c3bb24db15338bfa8368" alt="" width="15" height="15">--%>
-<%--        </div>--%>
-<%--        <div class="footer-text">--%>
-<%--           <p> 103 – 105 Đường Võ Nguyên Giáp, Phường Khuê Mỹ, Quận Ngũ hành Sơn, Tp. Đà Nẵng, Việt Nam.</p>--%>
-<%--            <p><span>7.0km </span>từ Sân bay Quốc tế Đà Nẵng</p>--%>
-<%--        </div>--%>
-<%--    </div>--%>
+    <%--    <div class="footer-big">--%>
+    <%--        <div>--%>
+    <%--            <img src="https://cdn-icons.flaticon.com/png/512/4643/premium/4643473.png?token=exp=1656983526~hmac=e1a78b5d2fb4c3bb24db15338bfa8368" alt="" width="15" height="15">--%>
+    <%--        </div>--%>
+    <%--        <div class="footer-text">--%>
+    <%--           <p> 103 – 105 Đường Võ Nguyên Giáp, Phường Khuê Mỹ, Quận Ngũ hành Sơn, Tp. Đà Nẵng, Việt Nam.</p>--%>
+    <%--            <p><span>7.0km </span>từ Sân bay Quốc tế Đà Nẵng</p>--%>
+    <%--        </div>--%>
+    <%--    </div>--%>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

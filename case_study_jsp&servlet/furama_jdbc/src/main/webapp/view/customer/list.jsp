@@ -13,6 +13,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../home/css_furama.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/boostrap/bootstrap413/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/boostrap/datatables/css/dataTables.bootstrap4.min.css"/>
+
     <style>
         button {
             border: none;
@@ -44,7 +49,7 @@
 <body>
 <div id="header-furama">
     <div>
-        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="80" width="80" alt="">
+        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="70" width="55" alt="">
     </div>
 
     <div>
@@ -55,43 +60,53 @@
     </div>
 
 </div>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" aria-current="page" href="home/home.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="/employee">Employee</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="#">Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="#">Contract</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder=" Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-primary bg-dark" style="position: sticky; top: 0">
+    <div class="container-fluid col-lg-12">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active button-function" aria-current="page" href="home/home.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active button-function" href="/employee">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active button-function" href="/customer">Customer</a>
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle button-function" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Service
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Villa</a></li>
+                        <li><a class="dropdown-item" href="#">Room</a></li>
+                        <li><a class="dropdown-item" href="#">House</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active button-function" href="#">Contract</a>
+                </li>
+            </ul>
+            <form class="d-flex" action="/customer" style="margin-top: 15px; margin-left: 25px">
+                <input name="name" class="form-control me-2 col-lg-3" type="text" placeholder=" name" aria-label="Search">
+                <input name="email" class="form-control me-2 col-lg-3" type="text" placeholder=" email" aria-label="Search">
+                <select name="type" id="typeCustomer" class="col-lg-3">
+                    <c:forEach items="${customerType}" var="typeCustomer">
+                        <option value="${typeCustomer.id}">${typeCustomer.name}</option>
+                    </c:forEach>
+                </select>
+                <input name="action" class="btn btn-outline-success" type="submit" value="search">
+            </form>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
 
 <center><h1>Customer List</h1></center>
 <button class="gun"><a href="/customer?action=create">Create New Customer</a></button>
 <div class="col-lg-12 gradient-header" style="width: 100%;height: auto">
 
-    <table class="table table-striped">
+    <table class="table text-center table-striped" id="table">
+        <thead>
         <tr>
             <th>ID</th>
             <th>Customer Type ID</th>
@@ -104,6 +119,8 @@
             <th>Address</th>
             <th>Actions</th>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach items="${customer}" var="customer">
             <tr>
                 <td>${customer.idCustomer}></td>
@@ -130,13 +147,15 @@
                 <td>${customer.address}</td>
                 <td>
                     <button class="gun"><a href="/customer?action=edit&id=${customer.idCustomer}">Edit</a></button>
-                    <button class="gun" type="button" onclick="infoDelete('${customer.idCustomer}','${customer.nameCustomer}')"
+                    <button class="gun" type="button"
+                            onclick="infoDelete('${customer.idCustomer}','${customer.nameCustomer}')"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Delete
                     </button>
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 
@@ -173,6 +192,26 @@
         document.getElementById("idDelete").value = id;
         document.getElementById("nameDelete").innerText = name;
     }
+</script>
+
+<script src="/boostrap/jquery/jquery-3.5.1.min.js"></script>
+<script src="/boostrap/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/boostrap/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="/boostrap/bootstrap413/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#table').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 4
+        });
+    })
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

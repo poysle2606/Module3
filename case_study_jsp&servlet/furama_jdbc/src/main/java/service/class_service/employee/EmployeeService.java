@@ -22,16 +22,21 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void editEmployee(Employee employee) {
-
+        employeeRepository.editEmployee(employee);
     }
 
     @Override
     public void deleteEmployee(int id) {
-
+        employeeRepository.deleteEmployee(id);
     }
 
     @Override
     public Employee findById(int id) {
-        return null;
+        return employeeRepository.findById(id);
+    }
+
+    @Override
+    public List<Employee> findEmployee(String name, String email, String address) {
+        return employeeRepository.findEmployee(name,email,address);
     }
 }

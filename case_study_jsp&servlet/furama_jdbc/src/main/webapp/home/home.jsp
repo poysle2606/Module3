@@ -16,7 +16,7 @@
 <body>
 <div id="header-furama">
     <div>
-        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="80" width="80" alt="">
+        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="70" width="55" alt="">
     </div>
 
     <div>
@@ -27,14 +27,8 @@
     </div>
 
 </div>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-primary bg-dark" style="position: sticky; top: 0">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -46,21 +40,27 @@
                     <li class="nav-item">
                         <a class="nav-link active button-function" href="/customer">Customer</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active button-function" href="#">Service</a>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle button-function" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Service
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Villa</a></li>
+                            <li><a class="dropdown-item" href="#">Room</a></li>
+                            <li><a class="dropdown-item" href="#">House</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active button-function" href="#">Contract</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex" style="margin-top: 15px">
                     <input class="form-control me-2" type="search" placeholder=" Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
-</div>
 <div class="col-lg-12" style="width: 100%;height: auto">
     <div class="col-lg-3 mid1" style="height: 100%;float: left"></div>
     <div class="col-lg-9 mid2" style="height: 100%; float: left">

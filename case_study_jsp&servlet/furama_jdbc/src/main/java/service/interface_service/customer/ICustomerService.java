@@ -15,4 +15,6 @@ public interface ICustomerService {
 
     Customer findById(int id);
 
+    List<Customer> findCustomer(String name,String email, String type);
+
 }

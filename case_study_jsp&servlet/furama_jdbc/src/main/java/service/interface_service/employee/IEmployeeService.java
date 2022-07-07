@@ -15,4 +15,6 @@ public interface IEmployeeService {
     void deleteEmployee(int id);
 
     Employee findById(int id);
+
+    List<Employee> findEmployee(String name, String email, String address);
 }

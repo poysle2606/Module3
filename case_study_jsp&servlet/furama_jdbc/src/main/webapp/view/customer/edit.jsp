@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -16,7 +17,7 @@
 <body>
 <div id="header-furama">
     <div>
-        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="80" width="80" alt="">
+        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png" height="70" width="55" alt="">
     </div>
 
     <div>
@@ -28,13 +29,8 @@
 
 </div>
 <div>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-primary bg-dark" style="position: sticky; top: 0">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -53,7 +49,7 @@
                         <a class="nav-link active button-function" href="#">Contract</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex" style="margin-top: 15px">
                     <input class="form-control me-2" type="search" placeholder=" Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
@@ -66,7 +62,7 @@
     <center><h1>Edit Customer</h1></center>
     <div>
         <form method="post">
-            <table >
+            <table>
                 <tr>
                     <th>ID:</th>
                     <td>
@@ -76,7 +72,17 @@
                 <tr>
                     <th>Type of Customer:</th>
                     <td>
-                        <input type="text" name="typeCustomer" size="45" value="${customer.idTypeCustomer}">
+                        <select name="typeCustomer" id="typeCustomer">
+                            <option value="">Select Type Customers</option>
+                            <c:forEach items="${customerType}" var="customerType">
+                                <c:if test="${customerType.id == customer.idTypeCustomer}">
+                                    <option selected value="${customerType.id}">${customerType.name}</option>
+                                </c:if>
+                                <c:if test="${customerType.id != customer.idTypeCustomer}">
+                                    <option value="${customerType.id}">${customerType.name}</option>
+                                </c:if>
+                            </c:forEach>
+                        </select>
                     </td>
                 </tr>
                 <tr>
@@ -126,7 +132,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button type="submit">Submit</button></td>
+                    <td>
+                        <button type="submit">Submit</button>
+                    </td>
                 </tr>
             </table>
 

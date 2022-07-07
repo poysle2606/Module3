@@ -11,15 +11,14 @@ public class Employee {
     private String address;
     private int positionId;
     private int divisionId;
-    private int education_degree_id;
+    private int educationDegreeId;
     private String userName;
 
     public Employee() {
     }
 
-    public Employee(int idEmployee, String nameEmployee, String dayOfBirth, String idCard,
-                    double salary, String numberPhone, String email, String address,
-                    int positionId, int divisionId, int education_degree_id, String userName) {
+    public Employee(int idEmployee, String nameEmployee, String dayOfBirth, String idCard, double salary,
+                    String numberPhone, String email, String address, int positionId, int divisionId, int educationDegreeId) {
         this.idEmployee = idEmployee;
         this.nameEmployee = nameEmployee;
         this.dayOfBirth = dayOfBirth;
@@ -30,12 +29,13 @@ public class Employee {
         this.address = address;
         this.positionId = positionId;
         this.divisionId = divisionId;
-        this.education_degree_id = education_degree_id;
-        this.userName = userName;
+        this.educationDegreeId = educationDegreeId;
     }
 
-    public Employee(String nameEmployee, String dayOfBirth, String idCard, double salary, String numberPhone, String email,
-                    String address, int positionId, int divisionId, int education_degree_id, String userName) {
+    public Employee(int idEmployee, String nameEmployee, String dayOfBirth, String idCard,
+                    double salary, String numberPhone, String email, String address,
+                    int positionId, int divisionId, int educationDegreeId, String userName) {
+        this.idEmployee = idEmployee;
         this.nameEmployee = nameEmployee;
         this.dayOfBirth = dayOfBirth;
         this.idCard = idCard;
@@ -45,9 +45,22 @@ public class Employee {
         this.address = address;
         this.positionId = positionId;
         this.divisionId = divisionId;
-        this.education_degree_id = education_degree_id;
+        this.educationDegreeId = educationDegreeId;
         this.userName = userName;
     }
+
+    public Employee(String nameEmployee, String dayOfBirth, String idCard, double salary, String numberPhone, String email,
+                    String address, int positionId, int divisionId, int educationDegreeId) {
+        this.nameEmployee = nameEmployee;
+        this.dayOfBirth = dayOfBirth;
+        this.idCard = idCard;
+        this.salary = salary;
+        this.numberPhone = numberPhone;
+        this.email = email;
+        this.address = address;
+        this.positionId = positionId;
+        this.divisionId = divisionId;
+        this.educationDegreeId = educationDegreeId;}
 
     public int getIdEmployee() {
         return idEmployee;
@@ -129,12 +142,12 @@ public class Employee {
         this.divisionId = divisionId;
     }
 
-    public int getEducation_degree_id() {
-        return education_degree_id;
+    public int getEducationDegreeId() {
+        return educationDegreeId;
     }
 
-    public void setEducation_degree_id(int education_degree_id) {
-        this.education_degree_id = education_degree_id;
+    public void setEducationDegreeId(int educationDegreeId) {
+        this.educationDegreeId = educationDegreeId;
     }
 
     public String getUserName() {
